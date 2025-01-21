@@ -7,10 +7,11 @@ connect();
 
 export async function POST(request: NextRequest) {
   try {
-    const reqBody = request.json();
+    const reqBody = await request.json(); // because request.json() returns a promise in next js as next runs on edge
+
     const { username, email, password } = reqBody;
     console.log(reqBody);
-
+    
     const user = await User.findOne({
       email,
     });
