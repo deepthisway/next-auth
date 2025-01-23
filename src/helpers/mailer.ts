@@ -23,7 +23,9 @@ export const sendEmail = async({email, emailType, userId} : any) => {
                     }
                 )
             }
-            
+            function hello(){
+
+            }
 
         var transporter = nodemailer.createTransport({
             host: "sandbox.smtp.mailtrap.io",
@@ -35,7 +37,7 @@ export const sendEmail = async({email, emailType, userId} : any) => {
         });
 
         const mailOptions = {
-            from: 'maddison53@ethereal.email',
+            from: 'deep@email.hello',
             to: email,
             subject: emailType === 'reset' ? 'Reset Password' : 'Verify Email',
             text: emailType === 'reset' ? 'Reset Password' : 'Verify Email',
