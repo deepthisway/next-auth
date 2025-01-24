@@ -23,9 +23,6 @@ export const sendEmail = async({email, emailType, userId} : any) => {
                     }
                 )
             }
-            function hello(){
-
-            }
 
         var transporter = nodemailer.createTransport({
             host: "sandbox.smtp.mailtrap.io",
@@ -49,6 +46,7 @@ export const sendEmail = async({email, emailType, userId} : any) => {
         }
         const mailResponse = await transporter.sendMail(mailOptions);
         return mailResponse;
+        
 
 
     } catch (error : any) {

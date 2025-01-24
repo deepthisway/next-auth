@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema= new mongoose.SChema({
+const userSchema= new mongoose.Schema({
     username:
     {
         type: String,
@@ -26,7 +26,7 @@ const userSchema= new mongoose.SChema({
         type: Boolean,
         default: false
     },
-    forgotPasswordTooken: String,
+    forgotPasswordToken: String,
     forgotPasswordTookenExpiry: Date,
     verifyToken: String,
     verifyTokenExpiry: Date
