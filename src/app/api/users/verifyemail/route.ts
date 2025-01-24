@@ -10,20 +10,20 @@ import { sendEmail } from "@/helpers/mailer";
 
 export async function POST(request: NextRequest)    {
     try {
-        const reqBody = await request.json();
+        const reqBody = await request.json();   // returns a promise, so put await;
         const {token} =reqBody;
         console.log("token is: ", token);
         
-        const user = User.findOne({verifyToken: token, verifyTokenExpiry: {$gt: Date.now()}})
+        const user = await User.findOne({verifyToken: token, verifyTokenExpiry: {$gt: Date.now()}})
 
         if(!user)   {
-            return Response.json({
+            return NextResponse.json({
                 status: 400,
                 message: "Invalid token!!",
             })
         }
 
-        console.log("user is: ", user);
+        // console.log("user is: ", user);
         
         user.isVerified = true;
         user.verifyToken = undefined;
@@ -31,15 +31,15 @@ export async function POST(request: NextRequest)    {
 
 
         await user.save();  // dont forget to put await;
-
-        return Response.json({
+        
+        return NextResponse.json({
             msg: "User verified successfully!!",
             success: true,
             
         }, {status: 201})
 
     } catch (error) {
-        return Response.json({
+        return NextResponse.json({
             status: 500,
             message: "Error is verification!!",
         })

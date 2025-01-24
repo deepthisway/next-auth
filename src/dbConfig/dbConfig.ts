@@ -2,9 +2,7 @@ import mongoose, { connection } from "mongoose";
 
 export async function connect() {
     try {
-        console.log("Reached fx of db")
         await mongoose.connect(process.env.MONGO_URI!)
-        console.log("crossed fx of db")
 
         connection.on('connected', ()=> {
             console.log('Connected to MongoDB')
