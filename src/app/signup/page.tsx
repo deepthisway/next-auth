@@ -11,7 +11,7 @@ const SignUpPage = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
-    username: "",
+    username: "", 
   });
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const router = useRouter();
@@ -33,7 +33,7 @@ const SignUpPage = () => {
 
   // Monitor signup button disable/enable state
   useEffect(() => {
-    setButtonDisabled(!(user.email && user.password));
+    setButtonDisabled(!(user.email && user.password && user.username));
   }, [user]);
 
   return (
